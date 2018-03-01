@@ -1,7 +1,7 @@
-package com.github.chen0040.tflite.classifiers.demo;
+package com.github.chen0040.tensorflow.classifiers.demo;
 
-import com.github.chen0040.tflite.classifiers.utils.ResourceUtils;
-import com.github.chen0040.tflite.classifiers.cifar10.Cifar10ImageClassifier;
+import com.github.chen0040.tensorflow.classifiers.utils.ResourceUtils;
+import com.github.chen0040.tensorflow.classifiers.cifar10.Cifar10ImageClassifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

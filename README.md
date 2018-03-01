@@ -61,7 +61,7 @@ public class Cifar10ImageClassifierDemo {
 ### Image Classification using Inception 
 
 Below show the [demo codes](image-classifier/src/main/java/com/github/chen0040/tflite/classifiers/demo/InceptionImageClassifierDemo.java)
-of the  Cifar10ImageClassifier which loads the [tensorflow_inception_graph.pb](image-classifier/src/main/resources/tf_models/tensorflow_inception_graph.pb)
+of the  InceptionImageClassifier which loads the [tensorflow_inception_graph.pb](image-classifier/src/main/resources/tf_models/tensorflow_inception_graph.pb)
 tensorflow model file, and uses it to do image classification:
 
 ```java

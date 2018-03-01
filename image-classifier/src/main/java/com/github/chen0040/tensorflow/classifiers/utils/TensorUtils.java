@@ -1,4 +1,4 @@
-package com.github.chen0040.tflite.classifiers.utils;
+package com.github.chen0040.tensorflow.classifiers.utils;
 
 import org.tensorflow.Tensor;
 
