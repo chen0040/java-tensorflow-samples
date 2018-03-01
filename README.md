@@ -4,6 +4,8 @@ Java sample codes on how to load tensorflow pretrained model file and predict ba
 
 # Usage
 
+### Image Classification using Cifar10
+
 Below show the [demo codes](image-classifier/src/main/java/com/github/chen0040/tflite/classifiers/demo/Cifar10ImageClassifierDemo.java)
 of the  Cifar10ImageClassifier which loads the [cnn_cifar10.pb](image-classifier/src/main/resources/tf_models/cnn_cifar10.pb)
 tensorflow model file, and uses it to do image classification:
@@ -56,7 +58,7 @@ public class Cifar10ImageClassifierDemo {
 }
 ```
 
-# Usage
+### Image Classification using Inception 
 
 Below show the [demo codes](image-classifier/src/main/java/com/github/chen0040/tflite/classifiers/demo/InceptionImageClassifierDemo.java)
 of the  Cifar10ImageClassifier which loads the [tensorflow_inception_graph.pb](image-classifier/src/main/resources/tf_models/tensorflow_inception_graph.pb)
