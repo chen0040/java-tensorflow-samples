@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0.1</version>
     <modules>
-        <module>tflite-image-classifier</module>
-        <module>tflite-hello-world</module>
+        <module>image-classifier</module>
+        <module>hello-world</module>
     </modules>
 
 
