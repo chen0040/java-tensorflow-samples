@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.chen0040</groupId>
-    <artifactId>java-tensorflow-lite-samples</artifactId>
+    <artifactId>java-tensorflow-samples</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1</version>
     <modules>
