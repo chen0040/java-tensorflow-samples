@@ -36,7 +36,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.chen0040.tflite.classifiers.Cifar10ImageClassifierDemo</mainClass>
+                                    <mainClass>com.github.chen0040.tflite.classifiers.demo.Cifar10ImageClassifierDemo</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

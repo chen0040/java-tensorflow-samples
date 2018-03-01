@@ -1,19 +1,17 @@
 package com.github.chen0040.tflite.classifiers.cifar10;
 
-import com.github.chen0040.tflite.classifiers.InputStreamUtils;
-import com.github.chen0040.tflite.classifiers.ResourceUtils;
-import com.github.chen0040.tflite.classifiers.TensorUtils;
+import com.github.chen0040.tflite.classifiers.utils.ImageUtils;
+import com.github.chen0040.tflite.classifiers.utils.InputStreamUtils;
+import com.github.chen0040.tflite.classifiers.utils.TensorUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tensorflow.Graph;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.FloatBuffer;
 import java.util.Arrays;
 
 public class Cifar10ImageClassifier implements AutoCloseable {
@@ -44,10 +42,12 @@ public class Cifar10ImageClassifier implements AutoCloseable {
     private static final Logger logger = LoggerFactory.getLogger(Cifar10ImageClassifier.class);
 
     public String predict_image(BufferedImage image) {
-        return predict_image(image, image.getWidth(), image.getHeight());
+        return predict_image(image, 32, 32);
     }
 
     public String predict_image(BufferedImage image, int imgWidth, int imgHeight){
+
+        image = ImageUtils.resizeImage(image, imgWidth, imgHeight);
 
         Tensor<Float> imageTensor = TensorUtils.getImageTensor(image, imgWidth, imgHeight);
 
