@@ -3,7 +3,6 @@ package com.github.chen0040.tflite.hello;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tensorflow.Graph;
-import org.tensorflow.Operation;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 
@@ -11,9 +10,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.LongBuffer;
 import java.util.Arrays;
 
 public class Cifar10ImageClassifier {
@@ -86,10 +83,6 @@ public class Cifar10ImageClassifier {
             String predicted_label = predict_image(image_path);
             logger.info("predicted class for {}: {}", image_name, predicted_label);
         }
-
-
-
-
     }
 
     private static String predict_image(String image_path){
