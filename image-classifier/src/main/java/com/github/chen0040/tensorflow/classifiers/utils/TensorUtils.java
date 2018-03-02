@@ -58,9 +58,9 @@ public class TensorUtils {
                 float red = (pixel >> 16) & 0xff;
                 float green = (pixel >> 8) & 0xff;
                 float blue = pixel & 0xff;
-                red = (red - 127.5f) / 255.0f;
-                green = (green-127.5f) / 255.0f;
-                blue = (blue-127.5f) / 255.0f;
+                red = (red - 127.5f) / 127.5f;
+                green = (green-127.5f) / 127.5f;
+                blue = (blue-127.5f) / 127.5f;
                 fb.put(index++, red);
                 fb.put(index++, green);
                 fb.put(index++, blue);
