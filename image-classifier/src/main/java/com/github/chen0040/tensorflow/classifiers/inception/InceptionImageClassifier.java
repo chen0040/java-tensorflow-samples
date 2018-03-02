@@ -1,6 +1,5 @@
 package com.github.chen0040.tensorflow.classifiers.inception;
 
-import com.github.chen0040.tensorflow.classifiers.cifar10.Cifar10ImageClassifier;
 import com.github.chen0040.tensorflow.classifiers.utils.ImageUtils;
 import com.github.chen0040.tensorflow.classifiers.utils.InputStreamUtils;
 import com.github.chen0040.tensorflow.classifiers.utils.ResourceUtils;
@@ -62,7 +61,7 @@ public class InceptionImageClassifier implements AutoCloseable {
 
         image = ImageUtils.resizeImage(image, imgWidth, imgHeight);
 
-        Tensor<Float> imageTensor = TensorUtils.getImageTensor(image, imgWidth, imgHeight);
+        Tensor<Float> imageTensor = TensorUtils.getImageTensorNormalized(image, imgWidth, imgHeight);
 
         try (Session sess = new Session(graph);
              Tensor<Float> result =

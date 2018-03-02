@@ -21,7 +21,9 @@ public class InceptionImageClassifierDemo {
 
         String[] image_names = new String[] {
                 "tiger",
-                "lion"
+                "lion",
+                "airplane",
+                "eagle"
         };
 
         for(String image_name :image_names) {

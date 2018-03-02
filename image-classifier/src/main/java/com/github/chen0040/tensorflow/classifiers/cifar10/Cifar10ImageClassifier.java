@@ -49,7 +49,7 @@ public class Cifar10ImageClassifier implements AutoCloseable {
 
         image = ImageUtils.resizeImage(image, imgWidth, imgHeight);
 
-        Tensor<Float> imageTensor = TensorUtils.getImageTensor(image, imgWidth, imgHeight);
+        Tensor<Float> imageTensor = TensorUtils.getImageTensorScaled(image, imgWidth, imgHeight);
 
         try (Session sess = new Session(graph);
              Tensor<Float> result =
