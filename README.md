@@ -175,7 +175,7 @@ public class BidirectionalLstmSentimentClassifierDemo {
 
 Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/audio/Cifar10AudioClassifierDemo.java)
 of the  Cifar10AudioClassifier which loads the [cifar10.pb](audio-classifier/src/main/resources/tf_models/cifar10.pb)
-tensorflow model file, and uses it to do sentiment analysis:
+tensorflow model file, and uses it to do music genres prediction:
 
 ```java
 import com.github.chen0040.tensorflow.classifiers.audio.models.cifar10.Cifar10AudioClassifier;
@@ -239,7 +239,7 @@ public class Cifar10AudioClassifierDemo {
 
 Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/audio/ResNetV2AudioClassifierDemo.java)
 of the  ResNetV2AudioClassifier which loads the [resnet-v2.pb](audio-classifier/src/main/resources/tf_models/resnet-v2.pb)
-tensorflow model file, and uses it to do sentiment analysis:
+tensorflow model file, and uses it to do music genres prediction:
 
 ```java
 import com.github.chen0040.tensorflow.classifiers.audio.models.resnet.ResNetV2AudioClassifier;
