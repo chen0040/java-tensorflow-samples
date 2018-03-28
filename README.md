@@ -103,7 +103,7 @@ public class InceptionImageClassifierDemo {
 
 ### Sentiment Analysis using 1D CNN
 
-Below show the [demo codes](sentiment-analysis/src/main/java/com/github/chen0040/tensorflow/classifiers/sentiment/CnnSentimentClassifierDemo.scala)
+Below show the [demo codes](sentiment-analysis/src/main/java/com/github/chen0040/tensorflow/classifiers/sentiment/CnnSentimentClassifierDemo.java)
 of the  CnnSentimentClassifier which loads the [wordvec_cnn.pb](sentiment-analysis/src/main/resources/tf_models/wordvec_cnn.pb)
 tensorflow model file, and uses it to do sentiment analysis:
 
@@ -138,7 +138,7 @@ public class CnnSentimentClassifierDemo {
 
 ### Sentiment Analysis using Bi-directional LSTM
 
-Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/sentiment/BidirectionalLstmSentimentClassifierDemo.scala)
+Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/sentiment/BidirectionalLstmSentimentClassifierDemo.java)
 of the  BidirectionalLstmSentimentClassifier which loads the [wordvec_bidirectional_lstm.pb](sentiment-analysis/src/main/resources/tf_models/wordvec_bidirectional_lstm.pb)
 tensorflow model file, and uses it to do sentiment analysis:
 
@@ -169,6 +169,134 @@ public class BidirectionalLstmSentimentClassifierDemo {
     }
 }
 
+```
+
+### Audio Classification using Cifar10 Audio Classifier
+
+Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/audio/Cifar10AudioClassifierDemo.java)
+of the  Cifar10AudioClassifier which loads the [cifar10.pb](audio-classifier/src/main/resources/tf_models/cifar10.pb)
+tensorflow model file, and uses it to do sentiment analysis:
+
+```java
+import com.github.chen0040.tensorflow.classifiers.audio.models.cifar10.Cifar10AudioClassifier;
+import com.github.chen0040.tensorflow.classifiers.audio.utils.ResourceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Cifar10AudioClassifierDemo {
+
+    private static final Logger logger = LoggerFactory.getLogger(Cifar10AudioClassifierDemo.class);
+
+    private static List<String> getAudioFiles() {
+        List<String> result = new ArrayList<>();
+        File file = new File("gtzan/genres");
+        System.out.println(file.getAbsolutePath());
+        if (file.isDirectory()) {
+            for (File class_folder : file.listFiles()) {
+                if (class_folder.isDirectory()) {
+                    for (File f : class_folder.listFiles()) {
+                        String file_path = f.getAbsolutePath();
+                        if (file_path.endsWith("au")) {
+                            result.add(file_path);
+
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) throws IOException {
+        InputStream inputStream = ResourceUtils.getInputStream("tf_models/cifar10.pb");
+        Cifar10AudioClassifier classifier = new Cifar10AudioClassifier();
+        classifier.load_model(inputStream);
+
+        List<String> paths = getAudioFiles();
+
+        Collections.shuffle(paths);
+
+        for (String path : paths) {
+            System.out.println("Predicting " + path + " ...");
+            File f = new File(path);
+            String label = classifier.predict_audio(f);
+
+            System.out.println("Predicted: " + label);
+        }
+    }
+}
+```
+
+### Audio Classification using ResNetV2 Audio Classifier
+
+Below show the [demo codes](sentiment-analysis/src/main/scala/com/github/chen0040/tensorflow/classifiers/audio/ResNetV2AudioClassifierDemo.java)
+of the  ResNetV2AudioClassifier which loads the [resnet-v2.pb](audio-classifier/src/main/resources/tf_models/resnet-v2.pb)
+tensorflow model file, and uses it to do sentiment analysis:
+
+```java
+import com.github.chen0040.tensorflow.classifiers.audio.models.resnet.ResNetV2AudioClassifier;
+import com.github.chen0040.tensorflow.classifiers.audio.utils.ResourceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ResNetV2AudioClassifierDemo {
+
+    private static final Logger logger = LoggerFactory.getLogger(ResNetV2AudioClassifierDemo.class);
+
+    private static List<String> getAudioFiles() {
+        List<String> result = new ArrayList<>();
+        File file = new File("gtzan/genres");
+        System.out.println(file.getAbsolutePath());
+        if (file.isDirectory()) {
+            for (File class_folder : file.listFiles()) {
+                if (class_folder.isDirectory()) {
+                    for (File f : class_folder.listFiles()) {
+                        String file_path = f.getAbsolutePath();
+                        if (file_path.endsWith("au")) {
+                            result.add(file_path);
+
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) throws IOException {
+        InputStream inputStream = ResourceUtils.getInputStream("tf_models/resnet-v2.pb");
+        ResNetV2AudioClassifier classifier = new ResNetV2AudioClassifier();
+        classifier.load_model(inputStream);
+
+        List<String> paths = getAudioFiles();
+
+        Collections.shuffle(paths);
+
+        for (String path : paths) {
+            System.out.println("Predicting " + path + " ...");
+            File f = new File(path);
+            String label = classifier.predict_audio(f);
+
+            System.out.println("Predicted: " + label);
+        }
+    }
+}
 
 ```
 
