@@ -11,6 +11,7 @@
     <modules>
         <module>image-classifier</module>
         <module>hello-world</module>
+        <module>sentiment-analysis</module>
     </modules>
 
 

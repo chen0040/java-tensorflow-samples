@@ -1,8 +1,8 @@
-package com.github.chen0040.tensorflow.classifiers.cifar10;
+package com.github.chen0040.tensorflow.classifiers.images.models.cifar10;
 
-import com.github.chen0040.tensorflow.classifiers.utils.ImageUtils;
-import com.github.chen0040.tensorflow.classifiers.utils.InputStreamUtils;
-import com.github.chen0040.tensorflow.classifiers.utils.TensorUtils;
+import com.github.chen0040.tensorflow.classifiers.images.utils.ImageUtils;
+import com.github.chen0040.tensorflow.classifiers.images.utils.InputStreamUtils;
+import com.github.chen0040.tensorflow.classifiers.images.utils.TensorUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tensorflow.Graph;

@@ -1,4 +1,4 @@
-package com.github.chen0040.tensorflow.classifiers.utils;
+package com.github.chen0040.tensorflow.classifiers.images.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,7 +1,7 @@
-package com.github.chen0040.tensorflow.classifiers.demo;
+package com.github.chen0040.tensorflow.classifiers.images;
 
-import com.github.chen0040.tensorflow.classifiers.inception.InceptionImageClassifier;
-import com.github.chen0040.tensorflow.classifiers.utils.ResourceUtils;
+import com.github.chen0040.tensorflow.classifiers.images.models.inception.InceptionImageClassifier;
+import com.github.chen0040.tensorflow.classifiers.images.utils.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

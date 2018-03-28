@@ -1,4 +1,4 @@
-package com.github.chen0040.tensorflow.classifiers.utils;
+package com.github.chen0040.tensorflow.classifiers.images.utils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

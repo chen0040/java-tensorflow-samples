@@ -1,4 +1,4 @@
-package com.github.chen0040.tflite.hello;
+package com.github.chen0040.tensorflow.hello;
 
 import org.tensorflow.Graph;
 import org.tensorflow.Session;
