@@ -1,6 +1,6 @@
 package com.github.chen0040.tensorflow.classifiers.sentiment.models;
 
-import com.github.chen0040.tensorflow.classifiers.images.utils.InputStreamUtils;
+import com.github.chen0040.tensorflow.classifiers.sentiment.utils.InputStreamUtils;
 import com.github.chen0040.tensorflow.classifiers.sentiment.utils.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
