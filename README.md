@@ -258,20 +258,17 @@ public class ResNetV2AudioClassifierDemo {
 
     private static final Logger logger = LoggerFactory.getLogger(ResNetV2AudioClassifierDemo.class);
 
-    private static List<String> getAudioFiles() {
+     private static List<String> getAudioFiles() {
         List<String> result = new ArrayList<>();
-        File file = new File("gtzan/genres");
-        System.out.println(file.getAbsolutePath());
-        if (file.isDirectory()) {
-            for (File class_folder : file.listFiles()) {
-                if (class_folder.isDirectory()) {
-                    for (File f : class_folder.listFiles()) {
-                        String file_path = f.getAbsolutePath();
-                        if (file_path.endsWith("au")) {
-                            result.add(file_path);
+        File dir = new File("music_samples");
+        System.out.println(dir.getAbsolutePath());
+        if (dir.isDirectory()) {
 
-                        }
-                    }
+            for (File f : dir.listFiles()) {
+                String file_path = f.getAbsolutePath();
+                if (file_path.endsWith("au")) {
+                    result.add(file_path);
+
                 }
             }
         }
