@@ -13,6 +13,7 @@
         <module>hello-world</module>
         <module>sentiment-analysis</module>
         <module>audio-classifier</module>
+        <module>audio-search-engine</module>
     </modules>
 
 

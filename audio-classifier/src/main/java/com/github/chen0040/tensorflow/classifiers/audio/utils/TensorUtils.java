@@ -10,7 +10,7 @@ public class TensorUtils {
 
         final int channels = 1;
 
-        System.out.println("width: " + imgWidth + ", height: " + imgHeight);
+        //System.out.println("width: " + imgWidth + ", height: " + imgHeight);
         // Generate image file to array
         int index = 0;
         FloatBuffer fb = FloatBuffer.allocate(imgWidth * imgHeight * channels);

@@ -1,57 +1,53 @@
 package com.github.chen0040.tensorflow.classifiers.audio.models.cifar10;
 
-import com.github.chen0040.tensorflow.classifiers.audio.utils.MelSpectrogram;
-import com.github.chen0040.tensorflow.classifiers.audio.utils.consts.MelSpectrogramDimension;
+import com.github.chen0040.tensorflow.classifiers.audio.models.AudioClassifier;
+import com.github.chen0040.tensorflow.classifiers.audio.models.TrainedModelLoader;
 import com.github.chen0040.tensorflow.classifiers.audio.utils.ImageUtils;
 import com.github.chen0040.tensorflow.classifiers.audio.utils.InputStreamUtils;
+import com.github.chen0040.tensorflow.classifiers.audio.utils.MelSpectrogram;
 import com.github.chen0040.tensorflow.classifiers.audio.utils.TensorUtils;
+import com.github.chen0040.tensorflow.classifiers.audio.utils.consts.MelSpectrogramDimension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tensorflow.Graph;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
-public class Cifar10AudioClassifier implements AutoCloseable {
+public class Cifar10AudioClassifier implements TrainedModelLoader, AudioClassifier, AutoCloseable {
 
     private Graph graph = new Graph();
     public Cifar10AudioClassifier() {
 
     }
 
+    @Override
     public void load_model(InputStream inputStream) throws IOException {
         byte[] bytes = InputStreamUtils.getBytes(inputStream);
         graph.importGraphDef(bytes);
 
     }
 
-    private static final String[] labels = new String[]{
-
-        "blues", "classical", "country", "disco", "hiphop", "jazz", "metal",
-                "pop", "reggae", "rock"
-
-    };
 
     private static final Logger logger = LoggerFactory.getLogger(Cifar10AudioClassifier.class);
 
+    @Override
     public String predict_image(BufferedImage image) {
         return predict_image(image, MelSpectrogramDimension.Width,
                 MelSpectrogramDimension.Height);
     }
 
-    public String predict_image(BufferedImage image, int imgWidth, int imgHeight){
+    @Override
+    public float[] encode_image(BufferedImage image, int imgWidth, int imgHeight) {
 
         image = ImageUtils.resizeImage(image, imgWidth, imgHeight);
 
         Tensor<Float> imageTensor = TensorUtils.getImageTensor(image, imgWidth, imgHeight);
-
 
 
         try (Session sess = new Session(graph);
@@ -67,24 +63,21 @@ public class Cifar10AudioClassifier implements AutoCloseable {
                                 Arrays.toString(rshape)));
             }
             int nlabels = (int) rshape[1];
-            float[] predicted = result.copyTo(new float[1][nlabels])[0];
-            int argmax = 0;
-            float max = predicted[0];
-            for(int i=1; i < nlabels; ++i) {
-                if(max < predicted[i]) {
-                    max = predicted[i];
-                    argmax = i;
-                }
-            }
-
-            return labels[argmax];
-        } catch(Exception ex) {
+            return result.copyTo(new float[1][nlabels])[0];
+        } catch (Exception ex) {
             logger.error("Failed to predict image", ex);
             ex.printStackTrace();
         }
 
-        return "unknown";
+        return null;
     }
+
+    @Override
+    public float[] encode_image(BufferedImage image) {
+        return encode_image(image, MelSpectrogramDimension.Width,
+                MelSpectrogramDimension.Height);
+    }
+
 
     @Override
     public void close() throws Exception {
@@ -94,17 +87,23 @@ public class Cifar10AudioClassifier implements AutoCloseable {
         }
     }
 
+    @Override
+    public float[] encode_audio(File f) {
+        BufferedImage image = MelSpectrogram.convert_to_image(f);
+
+        if(image != null) {
+            return encode_image(image);
+        }
+
+        return null;
+    }
+
+    @Override
     public String predict_audio(File f) {
-        MelSpectrogram melGram = new MelSpectrogram();
-        melGram.setOutputFrameWidth(MelSpectrogramDimension.Width);
-        melGram.setOutputFrameHeight(MelSpectrogramDimension.Height);
+        BufferedImage image = MelSpectrogram.convert_to_image(f);
 
-
-        try {
-            BufferedImage image = melGram.convertAudio(f);
+        if(image != null) {
             return predict_image(image);
-        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-            e.printStackTrace();
         }
 
         return "NA";
