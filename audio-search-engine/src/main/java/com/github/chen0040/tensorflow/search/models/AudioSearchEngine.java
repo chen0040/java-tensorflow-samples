@@ -68,9 +68,9 @@ public class AudioSearchEngine {
             }
         }
         for(AudioSearchEntry entry : temp){
-            entry.setDistanceSq(entry.getDistanceSq(d));
+            entry.setDistance(entry.getDistanceSq(d));
         }
-        temp.sort(Comparator.comparingDouble(a -> a.getDistanceSq()));
+        temp.sort(Comparator.comparingDouble(a -> a.getDistance()));
 
         List<AudioSearchEntry> result = new ArrayList<>();
         for(int i = pageIndex * pageSize; i < (pageIndex+1) * pageSize; ++i){

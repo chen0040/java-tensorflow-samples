@@ -14,6 +14,7 @@
         <module>sentiment-analysis</module>
         <module>audio-classifier</module>
         <module>audio-search-engine</module>
+        <module>audio-recommender</module>
     </modules>
 
 

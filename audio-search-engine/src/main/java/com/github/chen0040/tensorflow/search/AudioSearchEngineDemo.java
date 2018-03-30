@@ -21,7 +21,7 @@ public class AudioSearchEngineDemo {
             System.out.println("querying similar music to " + f.getName());
             List<AudioSearchEntry> result = searchEngine.query(f, pageIndex, pageSize, skipPerfectMatch);
             for(int i=0; i < result.size(); ++i){
-                System.out.println("# " + i + ": " + result.get(i).getPath() + " (distSq: " + result.get(i).getDistanceSq() + ")");
+                System.out.println("# " + i + ": " + result.get(i).getPath() + " (distSq: " + result.get(i).getDistance() + ")");
             }
         }
     }

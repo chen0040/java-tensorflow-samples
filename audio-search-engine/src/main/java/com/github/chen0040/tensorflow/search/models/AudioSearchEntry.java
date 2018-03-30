@@ -13,7 +13,7 @@ public class AudioSearchEntry {
     private String path;
     private float[] features;
     private long indexedTime;
-    private double distanceSq;
+    private double distance;
 
     public double getDistanceSq(float[] d) {
         double distanceSq = 0;
@@ -44,8 +44,12 @@ public class AudioSearchEntry {
     public AudioSearchEntry makeCopy() {
         AudioSearchEntry result = new AudioSearchEntry(this.path, this.features);
         result.indexedTime = this.indexedTime;
-        result.distanceSq = this.distanceSq;
+        result.distance = this.distance;
         return result;
     }
 
+    public AudioSearchEntry withDistance(double distance) {
+        this.distance = distance;
+        return this;
+    }
 }
