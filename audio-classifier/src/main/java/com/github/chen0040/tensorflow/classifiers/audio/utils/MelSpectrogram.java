@@ -49,7 +49,7 @@ public class MelSpectrogram  implements PitchDetectionHandler {
 
     BufferedImage bufferedImage = new BufferedImage(outputFrameWidth,outputFrameHeight, BufferedImage.TYPE_INT_RGB);
 
-    private PitchProcessor.PitchEstimationAlgorithm algorithm = PitchProcessor.PitchEstimationAlgorithm.YIN;
+    //private PitchProcessor.PitchEstimationAlgorithm algorithm = PitchProcessor.PitchEstimationAlgorithm.YIN;
 
     AudioProcessor fftProcessor = new AudioProcessor(){
 
@@ -174,7 +174,7 @@ public class MelSpectrogram  implements PitchDetectionHandler {
         bufferedImage = new BufferedImage(outputFrameWidth,outputFrameHeight, BufferedImage.TYPE_INT_RGB);
 
         // add a processor, handle pitch event.
-        dispatcher.addAudioProcessor(new PitchProcessor(algorithm, sampleRate, bufferSize, this));
+        //dispatcher.addAudioProcessor(new PitchProcessor(algorithm, sampleRate, bufferSize, this));
         dispatcher.addAudioProcessor(fftProcessor);
 
         position = 0;
