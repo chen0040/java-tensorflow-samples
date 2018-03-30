@@ -168,8 +168,8 @@ public class MelSpectrogram  implements PitchDetectionHandler {
     public BufferedImage convertAudio(File audioFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(audioFile, bufferSize, overlap);
-        AudioFormat format = AudioSystem.getAudioFileFormat(audioFile).getFormat();
-        dispatcher.addAudioProcessor(new AudioPlayer(format));
+        //AudioFormat format = AudioSystem.getAudioFileFormat(audioFile).getFormat();
+        //dispatcher.addAudioProcessor(new AudioPlayer(format));
 
         bufferedImage = new BufferedImage(outputFrameWidth,outputFrameHeight, BufferedImage.TYPE_INT_RGB);
 
